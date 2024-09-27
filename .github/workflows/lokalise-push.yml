@@ -16,7 +16,7 @@ jobs:
     steps:
     # Checkout the repository
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     # Install dependencies if needed (e.g., Axios or request for making API calls)
     - name: Install dependencies
