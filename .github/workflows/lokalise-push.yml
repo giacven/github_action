@@ -20,10 +20,6 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for all branches to avoid issues with file modifications
 
-      # Install dependencies if needed (optional)
-      - name: Install dependencies
-        run: npm install
-
       # Push the updated file to Lokalise
       - name: Push JSON file to Lokalise
         env:
