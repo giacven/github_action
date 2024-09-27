@@ -5,7 +5,7 @@ on:
   workflow_dispatch:  # Allow manual triggering of the workflow
   push:
     paths:
-      - giacven/github_action/en.json  # Specify the exact file path you want to monitor
+      - en.json  # Specify the exact file path you want to monitor
     branches:
       - main 
 
@@ -28,6 +28,6 @@ jobs:
         run: |
           curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
           -H "X-Api-Token: $LOKALISE_API_TOKEN" \
-          -F "file=@giacven/github_action/en.json" \
+          -F "file=@en.json" \
           -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
 
