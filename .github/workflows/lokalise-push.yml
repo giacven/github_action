@@ -2,7 +2,7 @@ name: Push JSON to Lokalise
 
 # Trigger the action when the file is changed
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # Allow manual triggering of the workflow
   push:
     paths:
       - giacven/github_action/en.json  # Specify the exact file path you want to monitor
@@ -14,11 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
+    # Checkout the repository using a local action (if you have copied the checkout action locally)
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: ./github/actions/checkout  # Use local checkout action
 
-    # Install dependencies if needed (e.g., Axios or request for making API calls)
+    # Install dependencies if needed (optional)
     - name: Install dependencies
       run: npm install
 
@@ -32,4 +32,5 @@ jobs:
         -H "X-Api-Token: $LOKALISE_API_TOKEN" \
         -F "file=@giacven/github_action/en.json" \
         -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
+
 
