@@ -13,6 +13,6 @@
   "app.signin.email": "Email",
   "app.signup": "SIGN UP here",
   "app.signup.password": "Password",
-  "app.signup.password_forgot": "Forgot password?",
+  "app.signup.password_forgot": "Forgot your password?",
   "app.welcome": "Hello!"
 }
