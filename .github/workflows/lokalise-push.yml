@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - giacven/github_action/en.json
+      - github_action/en.json
     branches:
       - main 
 
@@ -38,6 +38,6 @@ jobs:
         run: |
           curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
           -H "X-Api-Token: $LOKALISE_API_TOKEN" \
-          -F "file=@giacven/github_action/en.json" \
+          -F "file=@ggithub_action/en.json" \
           -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}" || { echo "Curl command failed"; exit 1; }
 
