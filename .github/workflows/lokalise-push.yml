@@ -5,7 +5,7 @@ on:
   workflow_dispatch:  # Allow manual triggering of the workflow
   push:
     paths:
-      - giacven/github_action/en.json  # Specify the exact file path you want to monitor
+      - "giacven/github_action/en.json" 
     branches:
       - main 
 
