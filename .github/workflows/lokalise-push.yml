@@ -17,12 +17,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Set up Node.js (optional, depending on how you want to interact with Lokalise API)
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-
     # Install dependencies if needed (e.g., Axios or request for making API calls)
     - name: Install dependencies
       run: npm install
