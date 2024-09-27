@@ -2,6 +2,7 @@ name: Push JSON to Lokalise
 
 # Trigger the action when the file is changed
 on:
+  workflow_dispatch:
   push:
     paths:
       - giacven/github_action/en.json  # Specify the exact file path you want to monitor
