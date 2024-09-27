@@ -1,0 +1,39 @@
+name: Push JSON to Lokalise
+
+# Trigger the action when the file is changed
+on:
+  push:
+    paths:
+      - /giacven/github_action/en.json  # Specify the exact file path you want to monitor
+    branches:
+      - main 
+
+jobs:
+  push-to-lokalise:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Set up Node.js (optional, depending on how you want to interact with Lokalise API)
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # Install dependencies if needed (e.g., Axios or request for making API calls)
+    - name: Install dependencies
+      run: npm install
+
+    # Push the updated file to Lokalise
+    - name: Push JSON file to Lokalise
+      env:
+        LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Store your Lokalise API token in GitHub Secrets
+        LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Store your Lokalise Project ID in GitHub Secrets
+      run: |
+        curl -X POST "https://api.lokalise.com/api2/projects/4492226666f701805e5952.05716960/files/upload" \
+        -H "X-Api-Token: ec870a3dc3558df93d5a167b32d4bf61a05a9dc5 \
+        -F "file=@path/to/file.json" \  # Specify the relative path to the file in your repo
+        -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
