@@ -14,23 +14,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Fetch all history for all branches to avoid issues with file modifications
 
-    # Install dependencies if needed (optional)
-    - name: Install dependencies
-      run: npm install
+      # Install dependencies if needed (optional)
+      - name: Install dependencies
+        run: npm install
 
-    # Push the updated file to Lokalise
-    - name: Push JSON file to Lokalise
-      env:
-        LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Store your Lokalise API token in GitHub Secrets
-        LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Store your Lokalise Project ID in GitHub Secrets
-      run: |
-        curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
-        -H "X-Api-Token: $LOKALISE_API_TOKEN" \
-        -F "file=@giacven/github_action/en.json" \
-        -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
-
-
+      # Push the updated file to Lokalise
+      - name: Push JSON file to Lokalise
+        env:
+          LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Store your Lokalise API token in GitHub Secrets
+          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Store your Lokalise Project ID in GitHub Secrets
+        run: |
+          curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
+          -H "X-Api-Token: $LOKALISE_API_TOKEN" \
+          -F "file=@giacven/github_action/en.json" \
+          -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
