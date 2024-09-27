@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository using a local action (if you have copied the checkout action locally)
-    - name: Checkout repository
-      uses: ./github/actions/checkout  # Use local checkout action
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
     # Install dependencies if needed (optional)
     - name: Install dependencies
