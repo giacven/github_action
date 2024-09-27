@@ -11,7 +11,7 @@
   "app.reviews": "{{count}} reviews",
   "app.sign_in": "SIGN IN",
   "app.signin.email": "Email",
-  "app.signup": "SIGN UP",
+  "app.signup": "SIGN UP here",
   "app.signup.password": "Password",
   "app.signup.password_forgot": "Forgot password?",
   "app.welcome": "Hello!"
