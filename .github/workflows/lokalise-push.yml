@@ -4,7 +4,7 @@ name: Push JSON to Lokalise
 on:
   push:
     paths:
-      - /giacven/github_action/en.json  # Specify the exact file path you want to monitor
+      - giacven/github_action/en.json  # Specify the exact file path you want to monitor
     branches:
       - main 
 
@@ -32,8 +32,9 @@ jobs:
       env:
         LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Store your Lokalise API token in GitHub Secrets
         LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Store your Lokalise Project ID in GitHub Secrets
-      run:
+      run: |
         curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
         -H "X-Api-Token: $LOKALISE_API_TOKEN" \
-        -F "file=@giacven/github_action/en.json" \  # Specify the relative path to the file in your repo
+        -F "file=@giacven/github_action/en.json" \
         -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
+
