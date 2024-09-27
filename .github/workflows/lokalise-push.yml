@@ -26,8 +26,8 @@ jobs:
           LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Store your Lokalise API token in GitHub Secrets
           LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Store your Lokalise Project ID in GitHub Secrets
         run: |
-          curl -X POST "https://api.lokalise.com/api2/projects/{project_id}/files/upload" \
-          -H "X-Api-Token: $LOKALISE_API_TOKEN" \
+          curl -X POST "https://api.lokalise.com/api2/projects/4492226666f701805e5952.05716960/files/upload" \
+          -H "X-Api-Token: ec870a3dc3558df93d5a167b32d4bf61a05a9dc5" \
           -F "file=@en.json" \
           -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
 
