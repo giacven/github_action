@@ -22,9 +22,6 @@ jobs:
 
       # Push the JSON file to Lokalise
       - name: Push JSON file to Lokalise
-        env:
-          LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  # Use the secret API token
-          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  # Use the secret project ID
         run: |
           curl -X POST "https://api.lokalise.com/api2/projects/8924818166f90cfed9af35.66887635/files/upload" \
           -H "X-Api-Token: 919873230a09f13d63d67ab49874325072977cf9" \
