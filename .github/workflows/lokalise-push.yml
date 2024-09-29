@@ -20,7 +20,8 @@ jobs:
         run: |
           curl -v -X POST "https://api.lokalise.com/api2/projects/${{ secrets.LOKALISE_PROJECT_ID }}/files/upload" \
              -H "X-Api-Token: ${{ secrets.LOKALISE_API_TOKEN }}" \
-             -F "file=@en.json"
+             -F "file=@en.json" \
+             -F 'data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}'
           if [[ $? -ne 0 ]]; then
             echo "Error: Failed to upload en.json to Lokalise!"
             exit 1
