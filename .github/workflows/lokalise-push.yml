@@ -25,8 +25,8 @@ jobs:
           LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_API_TOKEN }}  
           LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_PROJECT_ID }}  
         run: |
-          curl -X POST "https://api.lokalise.com/api2/projects/4492226666f701805e5952.05716960/files/upload" \
-          -H "X-Api-Token: ec870a3dc3558df93d5a167b32d4bf61a05a9dc5" \
+          curl -X POST "https://api.lokalise.com/api2/projects/$LOKALISE_PROJECT_ID/files/upload" \
+          -H "X-Api-Token: $LOKALISE_API_TOKEN" \
           -F "file=@en.json" \
           -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
 
