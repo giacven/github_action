@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'en.json'  # Trigger when this file is updated
+      - en.json  # Trigger when this file is updated
     branches:
       - main  # Only trigger on changes to the main branch
 
