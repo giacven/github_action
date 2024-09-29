@@ -1,11 +1,10 @@
 name: Push JSON to Lokalise
 
-# Trigger the action when manually dispatched or when the en.json file is changed on the main branch
 on:
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  workflow_dispatch:
   push:
     paths:
-      - en.json  # Trigger when this file is updated
+      - github_action/en.json  # Trigger when this file is updated
     branches:
       - main  # Only trigger on changes to the main branch
 
@@ -25,4 +24,4 @@ jobs:
         run: |
           curl -v -X POST "https://api.lokalise.com/api2/projects/8924818166f90cfed9af35.66887635/files/upload" \
           -H "X-Api-Token: 919873230a09f13d63d67ab49874325072977cf9" \
-          -F "file=@en.json"
+          -F "file=@github_action/en.json"
