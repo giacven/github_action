@@ -28,5 +28,5 @@ jobs:
         run: |
           curl -X POST "https://api.lokalise.com/api2/projects/${{ env.LOKALISE_PROJECT_ID }}/files/upload" \
           -H "X-Api-Token: ${{ env.LOKALISE_API_TOKEN }}" \
-          -F "file=@en.json" \
+          -F "file=@giacven/github_action/en.json" \
           -F "data={\"convert_placeholders\": false, \"replace_modified\": true, \"tags\": [\"auto-updated\"]}"
