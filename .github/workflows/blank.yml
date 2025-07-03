@@ -1,0 +1,43 @@
+name: Merge EN into EN_AU
+
+on:
+  push:
+    branches:
+      - main  # adjust as necessary
+    paths:
+      - 'locales/en.json'
+      - 'locales/en_AU.json'
+      - '.github/workflows/merge-en-into-en_au.yml'
+  workflow_dispatch:
+
+jobs:
+  merge-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get last commit message
+        id: commit_msg
+        run: echo "msg=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+
+      - name: Check message and exit if not matching
+        if: "!contains(steps.commit_msg.outputs.msg, 'merge into EN_AU')"
+        run: |
+          echo "Skipping: commit message does not contain 'merge into EN_AU'."
+          exit 0
+
+      - name: Set up jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Merge en.json into en_AU.json
+        run: |
+          jq -s '.[0] * .[1]' locales/en.json locales/en_AU.json > locales/en_AU.merged.json
+          mv locales/en_AU.merged.json locales/en_AU.json
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: merge en.json into en_AU.json via GitHub Actions"
+          file_pattern: "locales/en_AU.json"
