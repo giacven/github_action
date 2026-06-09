@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr_FR" sourcelanguage="en_US">
+  <context>
+    <name>MainWindow</name>
+    <message>
+        <source>File</source>
+        <comment>Main menu item for file operations</comment>
+        <translation>Fichier</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <comment>Open a file</comment>
+        <translation>Ouvrir</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <comment>Save the current file</comment>
+        <translation>Enregistrer</translation>
+    </message>
+    <message>
+        <source>%1 crashed</source>
+        <comment>Report that the program `%1` crashed</comment>
+        <translation>%1 a planté</translation>
+    </message>
+  </context>
+
+  <context>
+    <name>SettingsDialog</name>
+    <message>
+        <source>Settings</source>
+        <comment>Dialog title for application settings</comment>
+        <translation>Paramètres</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <comment>Cancel the current action</comment>
+        <translation>Annuler</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n item(s) selected</source>
+        <comment>Number of selected items</comment>
+        <translation>
+            <numerusform>%n élément sélectionné</numerusform>
+            <numerusform>%n éléments sélectionnés</numerusform>
+        </translation>
+    </message>
+  </context>
+</TS>
